@@ -174,6 +174,14 @@ public:
       //    last points to the last node of the updated list, and
       //    count is decremented by 1.
 
+    virtual void delSmallest();
+
+    virtual void delAllOccurences();
+
+    Type findKthEleA() const;
+
+    Type findKthEleB() const;
+
     linkedListIterator<Type> begin();
       //Function to return an iterator at the beginning of the
       //linked list.
