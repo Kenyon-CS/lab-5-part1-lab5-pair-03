@@ -42,6 +42,21 @@ public:
       //    is deleted from the list. first points to the first
       //    node, last points to the last node of the updated
       //    list, and count is decremented by 1.
+
+          virtual void delSmallest(); 
+    //Find and delete the node with the smallest info in the list.
+    //Delete only the first occurrence and traverse the list only once.
+
+    virtual void delAllOccurences();
+    //Find and delete all occurrences of a given info from the list.
+    //Traverse the list only once.
+
+    Type findKthEleA() const;
+    //Write a function that returns the info of the kth element of the linked list
+    //If no such element exists, terminate the program.
+
+    Type findKthEleB() const;
+    //If no such element exists, output an appropriate message
 };
 
 
