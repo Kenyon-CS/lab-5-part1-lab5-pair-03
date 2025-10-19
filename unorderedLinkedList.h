@@ -52,13 +52,6 @@ public:
     //virtual void delAllOccurences();
     //Find and delete all occurrences of a given info from the list.
     //Traverse the list only once.
-
-    Type findKthEleA(int k) const;
-    //Write a function that returns the info of the kth element of the linked list
-    //If no such element exists, terminate the program.
-
-    Type findKthEleB(int k) const;
-    //If no such element exists, output an appropriate message
 };
 
 
@@ -185,7 +178,8 @@ void unorderedLinkedList<Type>::deleteNode(const Type& deleteItem)
     }//end else
 }//end deleteNode
 
-
+/*Write a function that returns the info of the kth element of the linked list
+//If no such element exists, terminate the program.
 template <class Type>
 Type unorderedLinkedList<Type>::findKthEleA(int k) const{
     if (k >= count || k < 0) {
@@ -200,8 +194,6 @@ Type unorderedLinkedList<Type>::findKthEleA(int k) const{
         return current->info;
     }
 }
-    //Write a function that returns the info of the kth element of the linked list
-    //If no such element exists, terminate the program.
 
 template <class Type>
 Type unorderedLinkedList<Type>::findKthEleB(int k) const{
@@ -217,7 +209,7 @@ Type unorderedLinkedList<Type>::findKthEleB(int k) const{
         }
         return current->info;
     }
-}
+}*/
 
 
 #endif
