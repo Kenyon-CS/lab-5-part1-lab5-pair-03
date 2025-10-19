@@ -360,9 +360,10 @@ Type linkedListType<Type>::findKthEleB(int k) const{
 
 template <class Type>
 void linkedListType<Type>::rotate() {
-  nodeType<Type> *toBeMoved = first;
   if (count > 1) { //In case where count=1 or 0, nothing changes
+    nodeType<Type> *toBeMoved = first;
     first = first->link;
+    toBeMoved->link = nullptr;
     last->link = toBeMoved;
     last = toBeMoved;
   }

@@ -102,7 +102,7 @@ int main()                                          //Line 4
           listB.print();
           cout << "Rotating..." << endl;
           listB.rotate();
-          //listB.print();
+          listB.print();
      }
     //system("pause");
     return 0; 
