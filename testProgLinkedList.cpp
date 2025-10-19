@@ -64,7 +64,7 @@ int main()                                          //Line 4
      cout << "Do you want to test find Kth Element?(y/n) ";
      cin >> ans;
      if (ans == "y") {
-          unorderedLinkedList<int> listA, listB;
+          unorderedLinkedList<int> listA;
           cout << "Build listA. Enter integers ending with -999" << endl;
           cin >> num;
           while (num != -999) {
@@ -88,7 +88,22 @@ int main()                                          //Line 4
           x = listA.findKthEleB(k);
           cout << "Found element at index "<< k <<": " << x << endl;
      }
-
+     cout << "Do you want to test rotate?(y/n) ";
+     cin >> ans;
+     if (ans == "y") {
+          unorderedLinkedList<int> listB;
+          cout << "Build listB. Enter integers ending with -999" << endl;
+          cin >> num;
+          while (num != -999) {
+               listB.insertLast(num);
+               cin >> num;
+          }
+          cout << endl;
+          listB.print();
+          cout << "Rotating..." << endl;
+          listB.rotate();
+          //listB.print();
+     }
     //system("pause");
     return 0; 
 }  

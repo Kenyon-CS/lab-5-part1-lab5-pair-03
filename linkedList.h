@@ -193,6 +193,8 @@ public:
     Type findKthEleB(int k) const;
     //If no such element exists, output an appropriate message
 
+    void rotate();
+
     linkedListType();
       //default constructor
       //Initializes the list to an empty state.
@@ -340,6 +342,18 @@ Type linkedListType<Type>::findKthEleB(int k) const{
         }
         return current->info;
     }
+}
+
+template <class Type>
+void linkedListType<Type>::rotate() {
+  nodeType<Type> *toBeMoved = first;
+  if (count > 1) { //In case where count=1 or 0, nothing changes
+    first = first->link;
+    last->link = toBeMoved;
+    last = toBeMoved;
+  }
+  //Function to remove the first node of a linked list and put it
+  //at the end of the linked list.
 }
 
 template <class Type>
