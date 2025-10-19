@@ -200,6 +200,13 @@ public:
       //Postcondition: Returns an iterator such that current is set
       //    to NULL.
 
+    Type findKthEleA(int k) const;
+    //Write a function that returns the info of the kth element of the linked list
+    //If no such element exists, terminate the program.
+
+    Type findKthEleB(int k) const;
+    //If no such element exists, output an appropriate message
+
     linkedListType();
       //default constructor
       //Initializes the list to an empty state.
@@ -314,6 +321,39 @@ linkedListIterator<Type> linkedListType<Type>::end()
     linkedListIterator<Type> temp(NULL);
 
     return temp;
+}
+
+//Write a function that returns the info of the kth element of the linked list
+//If no such element exists, terminate the program.
+template <class Type>
+Type linkedListType<Type>::findKthEleA(int k) const{
+    if (k >= count || k < 0) {
+        throw runtime_error("Index out of bounds error");
+    } else {
+        nodeType<Type> *current;
+        current = first;
+        while (k > 0) {
+            current = current->link;
+            k--;
+        }
+        return current->info;
+    }
+}
+
+template <class Type>
+Type linkedListType<Type>::findKthEleB(int k) const{
+    if (k >= count || k < 0) {
+        cout << "Index out of range, returning 0..." << endl;
+        return 0;
+    } else {
+        nodeType<Type> *current;
+        current = first;
+        while (k > 0) {
+            current = current->link;
+            k--;
+        }
+        return current->info;
+    }
 }
 
 template <class Type>
