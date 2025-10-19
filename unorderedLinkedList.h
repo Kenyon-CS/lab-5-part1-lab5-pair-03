@@ -45,13 +45,19 @@ public:
       //    node, last points to the last node of the updated
       //    list, and count is decremented by 1.
 
-    //virtual void delSmallest(); 
-    //Find and delete the node with the smallest info in the list.
-    //Delete only the first occurrence and traverse the list only once.
+    void delSmallest();
+      //Function to delete the node with the smallest info in the list.
+      //Postcondition: If the list is not empty, the first occurrence
+      //    of the node with the smallest info is deleted from the list.
+      //    first points to the first node, last points to the last node
+      //    of the updated list, and count is decremented by 1.
 
-    //virtual void delAllOccurences();
-    //Find and delete all occurrences of a given info from the list.
-    //Traverse the list only once.
+    void delAllOccurrences(const Type& deleteItem);
+      //Function to delete all occurrences of deleteItem from the list.
+      //Postcondition: If found, all nodes containing deleteItem are
+      //    deleted from the list. first points to the first node,
+      //    last points to the last node of the updated list, and
+      //    count is decremented by the number of nodes deleted.
 
     Type findKthEleA(int k) const;
     //Write a function that returns the info of the kth element of the linked list
@@ -218,6 +224,115 @@ Type unorderedLinkedList<Type>::findKthEleB(int k) const{
         return current->info;
     }
 }
+
+template <class Type>
+void unorderedLinkedList<Type>::delSmallest()
+{
+    if (first == NULL)
+    {
+        cout << "Cannot delete from an empty list." << endl;
+        return;
+    }
+
+    nodeType<Type> *current;          //pointer to traverse the list
+    nodeType<Type> *trailCurrent;     //pointer just before current
+    nodeType<Type> *smallestNode;     //pointer to the node with smallest info
+    nodeType<Type> *trailSmallest;    //pointer just before smallestNode
+
+    //Initialize: assume first node has the smallest value
+    smallestNode = first;
+    trailSmallest = NULL;
+
+    //Traverse the list only once to find the smallest
+    trailCurrent = first;
+    current = first->link;
+
+    while (current != NULL)
+    {
+        if (current->info < smallestNode->info)
+        {
+            smallestNode = current;
+            trailSmallest = trailCurrent;
+        }
+        trailCurrent = current;
+        current = current->link;
+    }
+
+    //Delete the node with smallest info
+    if (smallestNode == first)  //smallest is the first node
+    {
+        first = first->link;
+        if (first == NULL)      //the list had only one node
+            last = NULL;
+        delete smallestNode;
+    }
+    else  //smallest is not the first node
+    {
+        trailSmallest->link = smallestNode->link;
+
+        if (smallestNode == last)  //smallest is the last node
+            last = trailSmallest;
+
+        delete smallestNode;
+    }
+
+    count--;
+}//end delSmallest
+
+template <class Type>
+void unorderedLinkedList<Type>::delAllOccurrences(const Type& deleteItem)
+{
+    if (first == NULL)
+    {
+        cout << "Cannot delete from an empty list." << endl;
+        return;
+    }
+
+    nodeType<Type> *current;          //pointer to traverse the list
+    nodeType<Type> *trailCurrent;     //pointer just before current
+    nodeType<Type> *temp;             //pointer to delete nodes
+
+    //Delete all occurrences from the beginning of the list
+    while (first != NULL && first->info == deleteItem)
+    {
+        temp = first;
+        first = first->link;
+        delete temp;
+        count--;
+    }
+
+    //If the list becomes empty after deleting from the beginning
+    if (first == NULL)
+    {
+        last = NULL;
+        return;
+    }
+
+    //Delete all occurrences from the rest of the list (single traversal)
+    trailCurrent = first;
+    current = first->link;
+
+    while (current != NULL)
+    {
+        if (current->info == deleteItem)
+        {
+            trailCurrent->link = current->link;
+
+            if (current == last)  //node to be deleted is the last node
+                last = trailCurrent;
+
+            temp = current;
+            current = current->link;
+            delete temp;
+            count--;
+        }
+        else
+        {
+            trailCurrent = current;
+            current = current->link;
+        }
+    }
+}//end delAllOccurrences
 
 
 #endif

@@ -174,6 +174,20 @@ public:
       //    last points to the last node of the updated list, and
       //    count is decremented by 1.
 
+    virtual void delSmallest() = 0;
+      //Function to delete the node with the smallest info in the list.
+      //Postcondition: If the list is not empty, the first occurrence
+      //    of the node with the smallest info is deleted from the list.
+      //    first points to the first node, last points to the last node
+      //    of the updated list, and count is decremented by 1.
+
+    virtual void delAllOccurrences(const Type& deleteItem) = 0;
+      //Function to delete all occurrences of deleteItem from the list.
+      //Postcondition: If found, all nodes containing deleteItem are
+      //    deleted from the list. first points to the first node,
+      //    last points to the last node of the updated list, and
+      //    count is decremented by the number of nodes deleted.
+
     linkedListIterator<Type> begin();
       //Function to return an iterator at the beginning of the
       //linked list.
