@@ -11,6 +11,7 @@
 
 #include "linkedList.h"
 #include <iostream>
+#include <stdexcept>
 
 using namespace std;
 
@@ -187,8 +188,8 @@ void unorderedLinkedList<Type>::deleteNode(const Type& deleteItem)
 
 template <class Type>
 Type unorderedLinkedList<Type>::findKthEleA(int k) const{
-    if (k >= count) {
-        return 0;
+    if (k >= count || k < 0) {
+        throw runtime_error("Index out of bounds error");
     } else {
         nodeType<Type> *current;
         current = first;
@@ -204,8 +205,8 @@ Type unorderedLinkedList<Type>::findKthEleA(int k) const{
 
 template <class Type>
 Type unorderedLinkedList<Type>::findKthEleB(int k) const{
-    if (k >= count) {
-        cout << "Index out of range, returning NULL";
+    if (k >= count || k < 0) {
+        cout << "Index out of range, returning 0..." << endl;
         return 0;
     } else {
         nodeType<Type> *current;
