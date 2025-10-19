@@ -10,6 +10,7 @@
 //***********************************************************
 
 #include "linkedList.h"
+#include <iostream>
 
 using namespace std;
 
@@ -43,19 +44,19 @@ public:
       //    node, last points to the last node of the updated
       //    list, and count is decremented by 1.
 
-          virtual void delSmallest(); 
+    //virtual void delSmallest(); 
     //Find and delete the node with the smallest info in the list.
     //Delete only the first occurrence and traverse the list only once.
 
-    virtual void delAllOccurences();
+    //virtual void delAllOccurences();
     //Find and delete all occurrences of a given info from the list.
     //Traverse the list only once.
 
-    Type findKthEleA() const;
+    Type findKthEleA(int k) const;
     //Write a function that returns the info of the kth element of the linked list
     //If no such element exists, terminate the program.
 
-    Type findKthEleB() const;
+    Type findKthEleB(int k) const;
     //If no such element exists, output an appropriate message
 };
 
@@ -182,6 +183,40 @@ void unorderedLinkedList<Type>::deleteNode(const Type& deleteItem)
         }//end else
     }//end else
 }//end deleteNode
+
+
+template <class Type>
+Type unorderedLinkedList<Type>::findKthEleA(int k) const{
+    if (k >= count) {
+        return 0;
+    } else {
+        nodeType<Type> *current;
+        current = first;
+        while (k > 0) {
+            current = current->link;
+            k--;
+        }
+        return current->info;
+    }
+}
+    //Write a function that returns the info of the kth element of the linked list
+    //If no such element exists, terminate the program.
+
+template <class Type>
+Type unorderedLinkedList<Type>::findKthEleB(int k) const{
+    if (k >= count) {
+        cout << "Index out of range, returning NULL";
+        return 0;
+    } else {
+        nodeType<Type> *current;
+        current = first;
+        while (k > 0) {
+            current = current->link;
+            k--;
+        }
+        return current->info;
+    }
+}
 
 
 #endif

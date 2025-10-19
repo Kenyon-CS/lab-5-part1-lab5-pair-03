@@ -11,7 +11,7 @@ int main()                                          //Line 4
     unorderedLinkedList<int> list1, list2;          //Line 6
     int num;                                        //Line 7
 
-    cout << "Line 8: Enter integers ending "
+    cout << "Enter integers ending "
          << "with -999" << endl;                    //Line 8
     cin >> num;                                     //Line 9
 
@@ -23,36 +23,36 @@ int main()                                          //Line 4
 
     cout << endl;                                   //Line 15
 
-    cout << "Line 16: list1: ";                     //Line 16
+    cout << "list1: ";                     //Line 16
     list1.print();                                  //Line 17
     cout << endl;                                   //Line 18
-    cout << "Line 19: Length of list1: "
+    cout << "Length of list1: "
          << list1.length() << endl;                 //Line 19
 
     list2 = list1;	   //test the assignment operator Line 20
 
-    cout << "Line 21: list2: ";                     //Line 21
+    cout << "list2: ";                     //Line 21
     list2.print();                                  //Line 22
     cout << endl;                                   //Line 23
-    cout << "Line 24: Length of list2: "
+    cout << "Length of list2: "
          << list2.length() << endl;                 //Line 24
 
-    cout << "Line 25: Enter the number to be "
+    cout << "Enter the number to be "
          << "deleted: ";                            //Line 25
     cin >> num;                                     //Line 26
     cout << endl;                                   //Line 27
 
     list2.deleteNode(num);                          //Line 28
 
-    cout << "Line 29: After deleting " << num
+    cout << "After deleting " << num
          << " list2: " << endl;                     //Line 29
     list2.print();                                  //Line 30
     cout << endl;                                   //Line 31
 
-    cout << "Line 32: Length of list2: "
+    cout << "Length of list2: "
          << list2.length() << endl;                 //Line 32
 
-    cout << endl << "Line 33: Output list1 "
+    cout << endl << "Output list1 "
          << "using an iterator" << endl;            //Line 33
 
     linkedListIterator<int> it;                     //Line 34
@@ -60,9 +60,31 @@ int main()                                          //Line 4
     for (it = list1.begin(); it != list1.end();
                              ++it)                  //Line 35
         cout << *it << " ";                         //Line 36
-    cout << endl;                                   //Line 37
+    cout << endl; 
+    
+    cout << "\n";
+
+    unorderedLinkedList<int> listA, listB;
+
+    cout << "Build listA. Enter integers ending "
+         << "with -999" << endl;
+    cin >> num;  
+
+    while (num != -999) {                                    
+        listA.insertLast(num);                     
+        cin >> num;                                 
+    }                                               
+    cout << endl;
+    listA.print();
+    cout << "\n";
+
+    int k;
+    cout << "Enter index to be found" << endl;
+    cin >> k;  
+    int x = listA.findKthEleA(k);
+    cout << "Found element at index "<<k<<": " << x << endl;
 
     //system("pause");
-    return 0;                                       //Line 38
-}                                                   //Line 39
+    return 0; 
+}  
 
