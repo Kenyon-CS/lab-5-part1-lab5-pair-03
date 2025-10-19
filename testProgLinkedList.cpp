@@ -104,7 +104,53 @@ int main()                                          //Line 4
           listB.rotate();
           listB.print();
      }
+     cout << "Do you want to test delSmallest and delAllOccurrences?(y/n) ";
+     cin >> ans;
+     if (ans == "y") {
+          unorderedLinkedList<int> list3, list4;
+          cout << "Build list3. Enter integers ending with -999" << endl;
+          cin >> num;
+          while (num != -999) {
+               list3.insertLast(num);
+               cin >> num;
+          }
+          cout << endl;
+          cout << "list3: ";
+          list3.print();
+          cout << endl;
+          cout << "Length of list3: " << list3.length() << endl;
+
+          list3.delSmallest();
+
+          cout << "After delSmallest, list3: ";
+          list3.print();
+          cout << endl;
+          cout << "Length of list3: " << list3.length() << endl;
+
+          cout << endl << "Build list4. Enter integers ending with -999" << endl;
+          cin >> num;
+          while (num != -999) {
+               list4.insertLast(num);
+               cin >> num;
+          }
+          cout << endl;
+          cout << "list4: ";
+          list4.print();
+          cout << endl;
+          cout << "Length of list4: " << list4.length() << endl;
+
+          cout << "Enter the number to delete all occurrences: ";
+          cin >> num;
+          cout << endl;
+
+          list4.delAllOccurrences(num);
+
+          cout << "After deleting all " << num << ", list4: ";
+          list4.print();
+          cout << endl;
+          cout << "Length of list4: " << list4.length() << endl;
+     }
     //system("pause");
-    return 0; 
-}  
+    return 0;
+}
 
