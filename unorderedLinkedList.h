@@ -59,12 +59,6 @@ public:
       //    last points to the last node of the updated list, and
       //    count is decremented by the number of nodes deleted.
 
-    Type findKthEleA(int k) const;
-    //Write a function that returns the info of the kth element of the linked list
-    //If no such element exists, terminate the program.
-
-    Type findKthEleB(int k) const;
-    //If no such element exists, output an appropriate message
 };
 
 
@@ -191,40 +185,6 @@ void unorderedLinkedList<Type>::deleteNode(const Type& deleteItem)
     }//end else
 }//end deleteNode
 
-
-template <class Type>
-Type unorderedLinkedList<Type>::findKthEleA(int k) const{
-    if (k >= count || k < 0) {
-        throw runtime_error("Index out of bounds error");
-    } else {
-        nodeType<Type> *current;
-        current = first;
-        while (k > 0) {
-            current = current->link;
-            k--;
-        }
-        return current->info;
-    }
-}
-    //Write a function that returns the info of the kth element of the linked list
-    //If no such element exists, terminate the program.
-
-template <class Type>
-Type unorderedLinkedList<Type>::findKthEleB(int k) const{
-    if (k >= count || k < 0) {
-        cout << "Index out of range, returning 0..." << endl;
-        return 0;
-    } else {
-        nodeType<Type> *current;
-        current = first;
-        while (k > 0) {
-            current = current->link;
-            k--;
-        }
-        return current->info;
-    }
-}
-
 template <class Type>
 void unorderedLinkedList<Type>::delSmallest()
 {
@@ -262,17 +222,19 @@ void unorderedLinkedList<Type>::delSmallest()
     if (smallestNode == first)  //smallest is the first node
     {
         first = first->link;
-        if (first == NULL)      //the list had only one node
+        if (first == NULL) { //the list had only one node
             last = NULL;
+        }
         delete smallestNode;
     }
     else  //smallest is not the first node
     {
         trailSmallest->link = smallestNode->link;
 
-        if (smallestNode == last)  //smallest is the last node
+        if (smallestNode == last) {  //smallest is the last node
             last = trailSmallest;
-
+            last->link = NULL;
+        }
         delete smallestNode;
     }
 
@@ -318,9 +280,10 @@ void unorderedLinkedList<Type>::delAllOccurrences(const Type& deleteItem)
         {
             trailCurrent->link = current->link;
 
-            if (current == last)  //node to be deleted is the last node
+            if (current == last) {  //node to be deleted is the last node
                 last = trailCurrent;
-
+                last->link = NULL;
+            }
             temp = current;
             current = current->link;
             delete temp;
